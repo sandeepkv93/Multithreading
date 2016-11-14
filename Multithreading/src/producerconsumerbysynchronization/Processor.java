@@ -1,4 +1,4 @@
-package producerconsumer;
+package producerconsumerbysynchronization;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +14,10 @@ public class Processor {
 				while (list.size() == LIMIT) {
 					lock.wait();
 				}
-				list.add(value++);
+				System.out.print("List Size: "+list.size());
+				value = value+1;
+				System.out.println("; Producer Produced Value: "+value);
+				list.add(value);
 				lock.notify();
 			}
 		}
@@ -28,7 +31,7 @@ public class Processor {
 				}
 				System.out.print("List Size: "+list.size());
 				int value = list.remove(0);
-				System.out.println("; Removed Value: "+value);
+				System.out.println("; Consumer Consumed Value: "+value);
                 lock.notify();
 			}
 			Thread.sleep(1000);
