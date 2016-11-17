@@ -44,7 +44,7 @@ public class Processor {
 			} finally {
 				myLock.unlock();
 			}
-			//Thread.sleep(1000);
+			Thread.sleep(100);
 		}
 	}
 	
